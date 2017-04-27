@@ -11,6 +11,7 @@ set backspace=2
 set smartindent
 set clipboard=unnamed
 set showmatch
+set matchtime=2
 
 " Esc を入力しやすく
 nnoremap <C-k> <Esc>
@@ -34,14 +35,15 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
-nnoremap <Down> gj
-nnoremap <Up>   gk
 
 let mapleader = "\<Space>"
 
 " 改行を追加
 nnoremap <leader>o :<C-u>call append(expand('.'), '')<Cr>j
 nnoremap <leader>O k:<C-u>call append(expand('.'), '')<Cr>j
+
+" file explore
+nnoremap <leader><leader> :Explore<CR>
 
 " インデント
 nnoremap > >>
