@@ -14,11 +14,10 @@ set showmatch
 set matchtime=2
 
 " Esc を入力しやすく
-nnoremap <C-k> <Esc>
-vnoremap <C-k> <Esc>
-inoremap <C-k> <Esc>
-cnoremap <C-k> <Esc>
-
+" nnoremap <C-l> <Esc>
+vnoremap <C-l> <Esc>
+inoremap <C-l> <Esc>
+cnoremap <C-l> <Esc>
 nnoremap <C-l> :w<Enter>
 nnoremap <Esc><Esc> :w<Enter>
 nnoremap <C-q> :q<Enter>
@@ -35,6 +34,14 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+
+inoremap <C-j> <DOWN>
+inoremap <C-k> <UP>
+
+nnoremap <C-j> }
+nnoremap <C-k> {
+vnoremap <C-j> }
+vnoremap <C-k> {
 
 let mapleader = "\<Space>"
 
