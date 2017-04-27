@@ -1,0 +1,69 @@
+set number
+set tabstop=2 shiftwidth=2 softtabstop=0
+set list
+" set listchars=tab:»-,trail:.,eol:¬
+set listchars=tab:»-,trail:.
+set showbreak=↪\ 
+set linebreak
+set breakindent
+set expandtab
+set backspace=2
+set smartindent
+set clipboard=unnamed
+set showmatch
+
+" Esc を入力しやすく
+nnoremap <C-k> <Esc>
+vnoremap <C-k> <Esc>
+inoremap <C-k> <Esc>
+cnoremap <C-k> <Esc>
+
+nnoremap <C-l> :w<Enter>
+nnoremap <Esc><Esc> :w<Enter>
+nnoremap <C-q> :q<Enter>
+
+" 入力モードをことえり風に
+inoremap <C-a> <C-o>^
+inoremap <C-e> <C-o>$
+inoremap <C-f> <C-o>l
+inoremap <C-b> <C-o>h
+inoremap <C-d> <C-o>s
+
+" 表示行単位で上下移動するように
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+nnoremap <Down> gj
+nnoremap <Up>   gk
+
+let mapleader = "\<Space>"
+
+" 改行を追加
+nnoremap <leader>o :<C-u>call append(expand('.'), '')<Cr>j
+nnoremap <leader>O k:<C-u>call append(expand('.'), '')<Cr>j
+
+" インデント
+nnoremap > >>
+nnoremap < <<
+
+" copy & paste map
+nnoremap <leader>d "*dd
+vnoremap <leader>d "*dd
+nnoremap <leader>y "*yy
+vnoremap <leader>y "*yy
+nnoremap <leader>p "*p
+vnoremap <leader>p "*p
+
+" remember last postion
+if has("autocmd")
+  augroup redhat
+    " In text files, always limit the width of text to 78 characters
+    autocmd BufRead *.txt set tw=78
+    " When editing a file, always jump to the last cursor position
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+  augroup END
+endif

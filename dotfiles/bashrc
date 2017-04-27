@@ -1,0 +1,30 @@
+safe_source () {
+  if [ -f $1 ]; then
+    source $1
+  fi
+}
+
+alias ls="ls -G"
+alias ll="ls -lG"
+alias la="ls -laG"
+alias l1="ls -1G"
+
+alias be='bundle exec'
+
+alias g='git'
+
+if [ -f $(which nvim) ] ; then
+  alias vim='nvim'
+  alias v='nvim'
+fi
+
+alias t='tmux'
+
+# git completion
+safe_source /usr/local/etc/bash_completion.d/git-prompt.sh
+safe_source /usr/local/etc/bash_completion.d/git-completion.bash
+
+# rust
+safe_source $HOME/.cargo/env
+
+PS1="\[\033[36m\]\t \[\033[32m\]\w \[\033[33m\]$ \[\033[0m\]"

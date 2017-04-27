@@ -1,0 +1,51 @@
+[user]
+  name = sh1nduu
+  email =
+
+[core]
+  excludesfile = ~/.gitignore_global
+  editor = nvim
+
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+
+[pretty]
+  log=fuller
+  la=tformat:%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s
+  ll=tformat:%C(yellow)%h%Creset %s %Cgreen(%cr) %C(bold blue) %an %Creset%C(red)%d%Creset
+  lh=tformat:%C(red)%d%Creset %C(yellow)%h%Creset %Cgreen(%cr)%Creset %s %C(bold blue) %an %Creset
+
+[alias]
+  a = add
+  al = add -A
+  all = add -A
+  b = branch
+  brm = branch -d
+  brmf = branch -D
+  bls = branch -v
+  ch = checkout
+  cm = commit
+  cma = commit --amend
+  cmd = commit -v
+  d = diff
+  dls = diff --name-status -M -C
+  ds = diff --staged
+  dt = diff --stat=120,130 -M -C
+  env = config --list
+  gr = log --graph --date=short --decorate=short --pretty=la
+  l = log --oneline
+  ll = log --graph --date=short --decorate=short --pretty=la
+  s = status
+  st = status
+
+[color]
+  ui = auto
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  required = true
