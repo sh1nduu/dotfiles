@@ -1,7 +1,5 @@
 safe_source () {
-  if [ -f $1 ]; then
-    source $1
-  fi
+  [ -f $1 ] && source $1
 }
 
 alias ls="ls -G"
@@ -15,7 +13,8 @@ alias g='git'
 
 alias t='tmux'
 
-if [ $(which nvim) ] ; then
+if type nvim 2> /dev/null 1>/dev/null
+then
   alias vim='nvim'
   alias v='nvim'
 fi
@@ -27,6 +26,6 @@ safe_source /usr/local/etc/bash_completion.d/git-completion.bash
 
 # rust
 safe_source $HOME/.cargo/env
-if [ $(hostname) == 'Shindo-MBP' ] ; then
+if [ $(hostname) == 'Shindo-MacBook-Pro.local' ] ; then
   PS1="\[\033[36m\]\t \[\033[32m\]\w \[\033[33m\]$ \[\033[0m\]"
 fi
