@@ -13,12 +13,13 @@ alias be='bundle exec'
 
 alias g='git'
 
-if [ -f $(which nvim) ] ; then
+alias t='tmux'
+
+if [ $(which nvim) ] ; then
   alias vim='nvim'
   alias v='nvim'
 fi
 
-alias t='tmux'
 
 # git completion
 safe_source /usr/local/etc/bash_completion.d/git-prompt.sh
@@ -26,5 +27,6 @@ safe_source /usr/local/etc/bash_completion.d/git-completion.bash
 
 # rust
 safe_source $HOME/.cargo/env
-
-PS1="\[\033[36m\]\t \[\033[32m\]\w \[\033[33m\]$ \[\033[0m\]"
+if [ $(hostname) == 'Shindo-MBP' ] ; then
+  PS1="\[\033[36m\]\t \[\033[32m\]\w \[\033[33m\]$ \[\033[0m\]"
+fi
