@@ -28,9 +28,21 @@ safe_source /usr/local/etc/bash_completion.d/git-completion.bash
 
 # rust
 safe_source $HOME/.cargo/env
+
+# color configuration
+BLACK="\[\033[30m\]"
+RED="\[\033[31m\]"
+GREEN="\[\033[32m\]"
+YELLOW="\[\033[33m\]"
+BLUE="\[\033[34m\]"
+PURPLE="\[\033[35m\]"
+CYAN="\[\033[36m\]"
+WHITE="\[\033[37m\]"
+RESET="\[\033[0m\]"
+
 if [ $(hostname) == 'Shindo-MacBook-Pro.local' ]
 then
-  PS1="\[\033[36m\]\t \[\033[32m\]\w \[\033[33m\]$ \[\033[0m\]"
+  PS1="${CYAN}\t ${GREEN}\w ${YELLOW}$ ${RESET}"
 else
-  PS1="\[\033[36m\]\t \h \[\033[32m\]\w \[\033[33m\]$ \[\033[0m\]"
+  PS1="\u@\h\s\n${CYAN}\t ${GREEN}\w ${YELLOW}$ ${RESET}"
 fi
