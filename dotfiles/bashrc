@@ -44,5 +44,5 @@ if [ $(hostname) == 'Shindo-MacBook-Pro.local' ]
 then
   PS1="${CYAN}\t ${GREEN}\w ${YELLOW}$ ${RESET}"
 else
-  PS1="\u@\h\s\n${CYAN}\t ${GREEN}\w ${YELLOW}$ ${RESET}"
+  PS1="\u@\h\s ->\n${CYAN}\t ${GREEN}\w ${YELLOW}$ ${RESET}"
 fi
