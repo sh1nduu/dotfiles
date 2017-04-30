@@ -17,6 +17,8 @@ if type nvim 2> /dev/null 1>/dev/null
 then
   alias vim='nvim'
   alias v='nvim'
+else
+  alias v='vim'
 fi
 
 
@@ -26,6 +28,9 @@ safe_source /usr/local/etc/bash_completion.d/git-completion.bash
 
 # rust
 safe_source $HOME/.cargo/env
-if [ $(hostname) == 'Shindo-MacBook-Pro.local' ] ; then
+if [ $(hostname) == 'Shindo-MacBook-Pro.local' ]
+then
   PS1="\[\033[36m\]\t \[\033[32m\]\w \[\033[33m\]$ \[\033[0m\]"
+else
+  PS1="\[\033[36m\]\t \h \[\033[32m\]\w \[\033[33m\]$ \[\033[0m\]"
 fi
