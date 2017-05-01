@@ -24,7 +24,6 @@ else
   alias v='vim'
 fi
 
-
 # git completion
 safe_source /usr/local/etc/bash_completion.d/git-prompt.sh
 safe_source /usr/local/etc/bash_completion.d/git-completion.bash
