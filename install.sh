@@ -6,6 +6,10 @@ do
   then
     rm $HOME/.$dotfile
   else
+    if [ ! -d backups ]
+    then
+      mkdir backups
+    fi
     mv $HOME/.$dotfile backups/$dotfile
   fi
   ln -s $PWD/dotfiles/$dotfile $HOME/.$dotfile
