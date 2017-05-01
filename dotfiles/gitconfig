@@ -25,9 +25,9 @@
   al = add -A
   all = add -A
   b = branch
+  bls = branch -v
   brm = branch -d
   brmf = branch -D
-  bls = branch -v
   ch = checkout
   cm = commit
   cma = commit --amend
