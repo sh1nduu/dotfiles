@@ -40,6 +40,8 @@
   gr = log --graph --date=short --decorate=short --pretty=la
   l = log --oneline
   ll = log --graph --date=short --decorate=short --pretty=la
+  pl = pull
+  ps = push
   s = status
   st = status
 
