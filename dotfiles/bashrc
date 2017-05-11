@@ -10,6 +10,10 @@ alias ll="ls -lG"
 alias la="ls -laG"
 alias l1="ls -1G"
 
+alias ..="cd ./.."
+alias ...="cd ./../../"
+alias ....="cd ./../../../"
+
 alias be='bundle exec'
 
 alias g='git'

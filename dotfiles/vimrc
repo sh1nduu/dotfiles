@@ -3,12 +3,13 @@ set incsearch
 set ignorecase
 set smartcase
 
+set relativenumber
 set number
 set tabstop=2 shiftwidth=2 softtabstop=0
 set list
 set listchars=tab:»-,trail:.,eol:¬
 " set listchars=tab:»-,trail:.
-set showbreak=↪\ 
+" set showbreak=↪\ 
 set linebreak
 set breakindent
 set expandtab
@@ -42,15 +43,24 @@ cnoremap <C-b> <Left>
 cnoremap <C-d> <Delete>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+cnoremap <C-k> <Delete>
 
-" 表示行単位で上下移動するように
+" Move by displayed line
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-inoremap <C-j> <DOWN>
-inoremap <C-k> <UP>
+" Fix the curfor when scrolling
+nnoremap <C-e> zz<C-e>j
+nnoremap <C-y> zz<C-y>k
+
+nnoremap g; g;zz
+nnoremap g; g,zz
+
+inoremap <C-k> <C-o>D
+" inoremap <C-j> <DOWN>
+" inoremap <C-k> <UP>
 
 nnoremap <C-j> }
 nnoremap <C-k> {
