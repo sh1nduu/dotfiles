@@ -23,31 +23,49 @@
 [alias]
   a = add
   al = add -A
-  all = add -A
   b = branch
+  back = "!f(){ git reset --mixed HEAD~$1;};f"
   bls = branch -v
   brm = branch -d
   brmf = branch -D
-  cl = clone
   ch = checkout
+  chremote = "!f(){ git checkout -b $1 origin/$1;};f"
+  chremotef = "!f(){ git checkout master && git branch -D $1 && git chremote $1;};f"
+  cl = clone
   cm = commit
   cma = commit --amend
   cmd = commit -v
+  cmm = commit -m
+  cmwip = commit -m 'wip'
   d = diff
   dls = diff --name-status -M -C
   ds = diff --staged
   dt = diff --stat=120,130 -M -C
   env = config --list
-  gr = log --graph --date=short --decorate=short --pretty=la
+  alias = "!git config --list |grep alias"
+  f = fetch
+  fa = fetch --all
+  hard = reset --hard
   l = log --oneline
   ll = log --graph --date=short --decorate=short --pretty=la
+  m = checkout master
   pl = pull
+  plom = pull origin master
   ps = push
+  pso = push origin
+  rba = rebase --abort
+  rbc = rebase --continue
+  rbi = "!f(){ rebase -i HEAD~$1;};f"
+  rbm = rebase master
   s = status
-  st = status
+  st = stash
+  stl = stash list
+  unstage = reset HEAD
+  wip = !git add -A && git commit -m 'wip'
 
 [color]
   ui = auto
+
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f

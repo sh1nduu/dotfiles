@@ -3,7 +3,6 @@ set incsearch
 set ignorecase
 set smartcase
 
-set relativenumber
 set number
 set tabstop=2 shiftwidth=2 softtabstop=0
 set list
@@ -18,6 +17,7 @@ set smartindent
 set clipboard+=unnamed
 set showmatch
 set matchtime=2
+set noshowcmd
 
 " Esc を入力しやすく
 " nnoremap <C-l> <Esc>

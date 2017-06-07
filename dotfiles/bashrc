@@ -1,36 +1,45 @@
 safe_source () {
-  if [ -f $1 ]
-  then
+  if [ -f $1 ]; then
     source $1
+    return 0
+  else
+    return 1
   fi
 }
 
-alias ls="ls -G"
-alias ll="ls -lG"
-alias la="ls -laG"
-alias l1="ls -1G"
-
 alias ..="cd ./.."
-alias ...="cd ./../../"
-alias ....="cd ./../../../"
-
 alias be='bundle exec'
-
 alias g='git'
-
+alias l1="ls -1G"
+alias la="ls -laG"
+alias ll="ls -lG"
+alias ls="ls -G"
+alias psg='ps aux|grep'
+alias reload='source ~/.bashrc'
 alias t='tmux'
 
-if type nvim 2> /dev/null 1>/dev/null
-then
+if type nvim 2> /dev/null 1>/dev/null; then
   alias vim='nvim'
   alias v='nvim'
 else
   alias v='vim'
 fi
 
-# git completion
+# git prompt
 safe_source /usr/local/etc/bash_completion.d/git-prompt.sh
+if [ $? == 0 ]; then
+  GIT_PS1_SHOWDIRTYSTATE=true
+  GIT_PS1_SHOWUNTRACKEDFILES=true
+  GIT_PS1_SHOWSTASHSTATE=true
+  GIT_PS1_SHOWSTREAM=true
+  GIT_BRANCH='$(__git_ps1)'
+fi
+
+# git completion
 safe_source /usr/local/etc/bash_completion.d/git-completion.bash
+if [ $? == 0 ]; then
+  __git_complete g __git_main
+fi
 
 # rust
 safe_source $HOME/.cargo/env
@@ -44,11 +53,10 @@ BLUE="\[\033[34m\]"
 PURPLE="\[\033[35m\]"
 CYAN="\[\033[36m\]"
 WHITE="\[\033[37m\]"
-RESET="\[\033[0m\]"
+RESET="\[\033[00m\]"
 
-if [[ $(hostname) == 'Shindo-MacBook-Pro.local' || $(hostname) == 'Shindo-MBP' ]]
-then
-  PS1="${CYAN}\t ${GREEN}\w ${YELLOW}$ ${RESET}"
+if [[ $(hostname) == 'Shindo-MacBook-Pro.local' || $(hostname) == 'Shindo-MBP' ]]; then
+  export PS1="${CYAN}\t ${GREEN}\w${RED}${GIT_BRANCH} ${YELLOW}$ ${RESET}"
 else
-  PS1="${WHITE}\u@\h (\s) ->\n${CYAN}\t ${GREEN}\w ${YELLOW}$ ${RESET}"
+  export PS1='${WHITE}\u@\h (\s) ->\n${CYAN}\t ${GREEN}\w ${YELLOW}$ ${RESET}'
 fi
