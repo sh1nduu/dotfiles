@@ -58,5 +58,5 @@ RESET="\[\033[00m\]"
 if [[ $(hostname) == 'Shindo-MacBook-Pro.local' || $(hostname) == 'Shindo-MBP' ]]; then
   export PS1="${CYAN}\t ${GREEN}\w${RED}${GIT_BRANCH} ${YELLOW}$ ${RESET}"
 else
-  export PS1='${WHITE}\u@\h (\s) ->\n${CYAN}\t ${GREEN}\w ${YELLOW}$ ${RESET}'
+  export PS1="${WHITE}\u@\h (\s) ->\n${CYAN}\t ${GREEN}\w ${YELLOW}$ ${RESET}"
 fi
