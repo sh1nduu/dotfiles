@@ -7,6 +7,14 @@ safe_source () {
   fi
 }
 
+has_cmd () {
+  if type $1 2> /dev/null 1>/dev/null; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 alias ..="cd ./.."
 alias be='bundle exec'
 alias g='git'
@@ -18,9 +26,12 @@ alias psg='ps aux|grep'
 alias reload='source ~/.bashrc'
 alias t='tmux'
 
-if type nvim 2> /dev/null 1>/dev/null; then
+# if type nvim 2> /dev/null 1>/dev/null; then
+has_cmd nvim
+if [ $? == 0 ]; then
   alias vim='nvim'
   alias v='nvim'
+  git config --global core.editor nvim
 else
   alias v='vim'
 fi
