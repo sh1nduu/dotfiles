@@ -29,7 +29,7 @@
   brm = branch -d
   brmf = branch -D
   ch = checkout
-  chremote = "!f(){ git checkout -b $1 origin/$1;};f"
+  chremote = "!f(){ git fetch --all && git checkout -b $1 origin/$1;};f"
   chremotef = "!f(){ git checkout master && git branch -D $1 && git chremote $1;};f"
   cl = clone
   cm = commit
@@ -67,6 +67,7 @@
   ui = auto
 
 [filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
