@@ -23,13 +23,14 @@
 [alias]
   a = add
   al = add -A
+  alias = "!git config --list |grep alias"
   b = branch
   back = "!f(){ git reset --mixed HEAD~$1;};f"
   bls = branch -v
   brm = branch -d
   brmf = branch -D
   ch = checkout
-  chremote = "!f(){ git fetch --all && git checkout -b $1 origin/$1;};f"
+  chremote = "!f(){ git fetch origin $1 && git checkout -b $1 origin/$1;};f"
   chremotef = "!f(){ git checkout master && git branch -D $1 && git chremote $1;};f"
   cl = clone
   cm = commit
@@ -42,7 +43,6 @@
   ds = diff --staged
   dt = diff --stat=120,130 -M -C
   env = config --list
-  alias = "!git config --list |grep alias"
   f = fetch
   fa = fetch --all
   hard = reset --hard
@@ -61,6 +61,7 @@
   st = stash
   stl = stash list
   unstage = reset HEAD
+  update = !git branch | grep '*' |awk '{ print $2 }'|xargs -I % git chremotef %
   wip = !git add -A && git commit -m 'wip'
 
 [color]
