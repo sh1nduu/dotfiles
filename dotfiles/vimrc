@@ -2,6 +2,7 @@ set autoread
 set incsearch
 set ignorecase
 set smartcase
+set noswapfile
 
 set number
 set tabstop=2 shiftwidth=2 softtabstop=0
@@ -9,15 +10,23 @@ set list
 set listchars=tab:»-,trail:.,eol:¬
 " set listchars=tab:»-,trail:.
 " set showbreak=↪\ 
+set showbreak=→\ 
 set linebreak
 set breakindent
 set expandtab
 set backspace=2
-set smartindent
+"set smartindent
 set clipboard+=unnamed
 set showmatch
 set matchtime=2
 set noshowcmd
+
+" change indent width by filetype
+autocmd BufRead,BufNewFile   *.c,*.h,*.java set sw=4 sts=4 cin
+autocmd BufRead,BufNewFile   *.py set sw=4 sts=4 expandtab ts=8
+autocmd BufRead,BufNewFile   *.rs set sw=4 sts=4
+autocmd BufRead,BufNewFile   *.php set ts=4 sts=4 sw=4
+
 
 " Esc を入力しやすく
 " nnoremap <C-l> <Esc>
@@ -44,6 +53,10 @@ cnoremap <C-d> <Delete>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 cnoremap <C-k> <Delete>
+
+" Resize pane
+nnoremap <C-w><C-j> :res +5<CR>
+nnoremap <C-w><C-k> :res -5<CR>
 
 " Move by displayed line
 nnoremap j gj

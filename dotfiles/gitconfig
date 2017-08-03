@@ -17,8 +17,10 @@
 [pretty]
   log=fuller
   la=tformat:%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s
+  lb=tformat:%Cgreen%h %Creset%cd %Creset%s
   ll=tformat:%C(yellow)%h%Creset %s %Cgreen(%cr) %C(bold blue) %an %Creset%C(red)%d%Creset
   lh=tformat:%C(red)%d%Creset %C(yellow)%h%Creset %Cgreen(%cr)%Creset %s %C(bold blue) %an %Creset
+  noc=tformat:%h %cd
 
 [alias]
   a = add
@@ -29,9 +31,12 @@
   bls = branch -v
   brm = branch -d
   brmf = branch -D
+  bs = branch -v --sort authordate
   ch = checkout
   chremote = "!f(){ git fetch origin $1 && git checkout -b $1 origin/$1;};f"
   chremotef = "!f(){ git checkout master && git branch -D $1 && git chremote $1;};f"
+  chre = !git chremote
+  chref = !git chremotef
   cl = clone
   cm = commit
   cma = commit --amend
@@ -46,13 +51,14 @@
   f = fetch
   fa = fetch --all
   hard = reset --hard
-  l = log --oneline
+  l = log --decorate=short --pretty=la --date=short
   ll = log --graph --date=short --decorate=short --pretty=la
   m = checkout master
   pl = pull
   plom = pull origin master
   ps = push
   pso = push origin
+  pstream = push --set-upstream
   rba = rebase --abort
   rbc = rebase --continue
   rbi = "!f(){ rebase -i HEAD~$1;};f"
@@ -60,6 +66,13 @@
   s = status
   st = stash
   stl = stash list
+  today = log --since=yesterday --until=now --oneline
+  today-commit = !git today-hash |awk 'NR==1{printf $1\" \"}END{print $1}'|awk '{print system(\"git show \"$2\"..\"$1)}'
+  today-diff = diff "master@{yesterday}"
+  today-hash = !git log --since=yesterday --until=now --date=short --pretty=noc|awk '{print $1}'
+  today-merge = !git today --decorate=short --pretty=lb --date=short|grep Merge
+  today-pr = !git today-merge|awk '{ print $3\" PR\"$6\" \" $7}'
+  today-pr-or = !git today-pr|awk -F \"[/]\" '{printf $2\" OR \"}'
   unstage = reset HEAD
   update = !git branch | grep '*' |awk '{ print $2 }'|xargs -I % git chremotef %
   wip = !git add -A && git commit -m 'wip'
@@ -72,3 +85,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[diff]
+	compactionHeuristic = true

@@ -15,6 +15,8 @@ has_cmd () {
   fi
 }
 
+safe_source .bashfunc
+
 alias ..="cd ./.."
 alias be='bundle exec'
 alias g='git'
@@ -25,6 +27,7 @@ alias ls="ls -G"
 alias psg='ps aux|grep'
 alias reload='source ~/.bashrc'
 alias t='tmux'
+alias e='emacs'
 
 # if type nvim 2> /dev/null 1>/dev/null; then
 has_cmd nvim
