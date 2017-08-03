@@ -37,6 +37,7 @@ if [ $? == 0 ]; then
   git config --global core.editor nvim
 else
   alias v='vim'
+  git config --global core.editor vim
 fi
 
 # git prompt
