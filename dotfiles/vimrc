@@ -114,8 +114,6 @@ if has("autocmd")
   augroup END
 endif
 
-autocmd Filetype php setlocal ts=4 sts=4 sw=4
-
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
@@ -138,9 +136,9 @@ if dein#load_state('/root/.dein')
 
     " You can specify revision/branch/tag.
     call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-    call dein#add('Shougo/neosnippet.vim')
 
     call dein#add('rking/ag.vim')
+
     call dein#add('scrooloose/nerdtree')
 
     call dein#add('ctrlpvim/ctrlp.vim')
