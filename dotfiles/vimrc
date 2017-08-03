@@ -122,15 +122,15 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/root/.config/repos/github.com/Shougo/dein.vim
+set runtimepath+=/root/.dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/root/.config')
-  call dein#begin('/root/.config')
+if dein#load_state('/root/.dein')
+  call dein#begin('/root/.dein')
 
     " Let dein manage dein
     " Required:
-    call dein#add('/root/.config/repos/github.com/Shougo/dein.vim')
+    call dein#add('/root/.dein/repos/github.com/Shougo/dein.vim')
 
     " Add or remove your plugins here:
     call dein#add('Shougo/neosnippet.vim')
@@ -164,6 +164,11 @@ if dein#check_install()
 endif
 
 "End dein Scripts-------------------------
+
+if executable('ag')
+  let g:ctrlp_use_caching=0
+  let g:ctrlp_user_command='ag %s -i --nocolor --nogroup -g ""'
+endif
 
 nnoremap <leader><leader> :NERDTreeToggle<CR>
 
