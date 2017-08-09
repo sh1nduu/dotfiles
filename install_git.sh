@@ -1,7 +1,7 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
-yum install -y perl-devel openssl-devel curl-devel expat-devel gettext-devel zlib-devel
+yum install -y git perl-devel openssl-devel curl-devel expat-devel gettext-devel zlib-devel
 
 GIT=git-2.13.4
 wget https://www.kernel.org/pub/software/scm/git/${GIT}.tar.gz

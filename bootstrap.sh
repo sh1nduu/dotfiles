@@ -17,6 +17,9 @@ if ! [ -f "${TMP}/epel-release-6-8.noarch.rpm" ]; then
   rpm -ivh ${TMP}/epel-release-6-8.noarch.rpm
 fi
 
+sh install_git.sh
+sh install_neovim.sh
+
 # Install plugin manager for vim
 if ! [ -f "${TMP}/installer.sh" ]; then
   wget -P ${TMP}/ https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
@@ -24,3 +27,4 @@ if ! [ -f "${TMP}/installer.sh" ]; then
 fi
 
 yum install -y the_silver_searcher
+
