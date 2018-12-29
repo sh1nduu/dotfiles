@@ -1,37 +1,34 @@
 set autoread
-set incsearch
+set backspace=2
+set breakindent
+set clipboard+=unnamed
+set expandtab
 set ignorecase
-set smartcase
-set noswapfile
-
-set number
-set tabstop=2 shiftwidth=2 softtabstop=0
+set incsearch
+set linebreak
 set list
 set listchars=tab:»-,trail:.,eol:¬
-" set listchars=tab:»-,trail:.
-" set showbreak=↪\ 
-set showbreak=→\ 
-set linebreak
-set breakindent
-set expandtab
-set backspace=2
-"set smartindent
-set clipboard+=unnamed
-set showmatch
 set matchtime=2
 set noshowcmd
+set noswapfile
+set number
+set showbreak=↪\ 
+set showmatch
+set smartcase
+set tabstop=2 shiftwidth=2 softtabstop=0
 
 " change indent width by filetype
 autocmd BufRead,BufNewFile   *.c,*.h,*.java set sw=4 sts=4 cin
+autocmd BufRead,BufNewFile   *.c set cin
 autocmd BufRead,BufNewFile   *.py set sw=4 sts=4 expandtab ts=8
 autocmd BufRead,BufNewFile   *.rs set sw=4 sts=4
 autocmd BufRead,BufNewFile   *.php set ts=4 sts=4 sw=4
-
+autocmd BufRead,BufNewFile   *.cpp set sw=2 sts=2
+autocmd BufRead,BufNewFile   *.ruby, *.toml, *.yml set ts=2 sts=2 sw=2
 
 " Esc を入力しやすく
-" nnoremap <C-l> <Esc>
 vnoremap <C-l> <Esc>
-inoremap <C-l> <Esc>
+inoremap <C-l> <Esc>:w<CR>
 cnoremap <C-l> <Esc>
 nnoremap <C-l> :w<Enter>
 nnoremap <Esc><Esc> :w<Enter>
@@ -43,6 +40,7 @@ inoremap <C-e> <End>
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 inoremap <C-d> <Delete>
+inoremap <C-k> <C-o>D
 
 " command mode move
 cnoremap <C-a> <Home>
@@ -64,16 +62,8 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-" Fix the curfor when scrolling
-nnoremap <C-e> zz<C-e>j
-nnoremap <C-y> zz<C-y>k
-
 nnoremap g; g;zz
 nnoremap g; g,zz
-
-inoremap <C-k> <C-o>D
-" inoremap <C-j> <DOWN>
-" inoremap <C-k> <UP>
 
 nnoremap <C-j> }
 nnoremap <C-k> {

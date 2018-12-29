@@ -38,6 +38,8 @@
   chre = !git chremote
   chref = !git chremotef
   cl = clone
+  clearfeature = "!git branch | grep feature | xargs -I % git branch -D %"
+  root = rev-parse --show-toplevel
   cm = commit
   cma = commit --amend
   cmd = commit -v
@@ -81,9 +83,9 @@
   ui = auto
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+	clean = git-lfs clean -- %f
 [diff]
 	compactionHeuristic = true

@@ -15,11 +15,21 @@ has_cmd () {
   fi
 }
 
+new_rails_app () {
+  mkdir $1
+  cd $1
+  bundle init
+  sed -i '' 's/# gem "rails"/gem "rails"/' Gemfile
+  bundle install --path=vendor/bundle --jobs 20
+}
+
 safe_source .bashfunc
 
 alias ..="cd ./.."
 alias be='bundle exec'
+alias e='emacs'
 alias g='git'
+alias gb='gitbook'
 alias l1="ls -1G"
 alias la="ls -laG"
 alias ll="ls -lG"
@@ -27,7 +37,7 @@ alias ls="ls -G"
 alias psg='ps aux|grep'
 alias reload='source ~/.bashrc'
 alias t='tmux'
-alias e='emacs'
+alias work='cd ~/work'
 
 # if type nvim 2> /dev/null 1>/dev/null; then
 has_cmd nvim
@@ -37,6 +47,16 @@ if [ $? == 0 ]; then
   git config --global core.editor nvim
 else
   alias v='vim'
+fi
+
+export LESSCHARSET=utf-8
+
+PATH=${JAVA_HOME}/bin:${PATH}
+
+if which jenv > /dev/null; then
+  # JENV_ROOTがemptyの場合、'${HOME}/.jenv'がrootと設定される
+  export JENV_ROOT=/usr/local/var/jenv
+  eval "$(jenv init -)"
 fi
 
 # git prompt
@@ -74,3 +94,7 @@ if [[ $(hostname) == 'Shindo-MacBook-Pro.local' || $(hostname) == 'Shindo-MBP' ]
 else
   export PS1="${WHITE}\u@\h (\s) ->\n${CYAN}\t ${GREEN}\w ${YELLOW}$ ${RESET}"
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/shindo/.sdkman"
+[[ -s "/Users/shindo/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/shindo/.sdkman/bin/sdkman-init.sh"
